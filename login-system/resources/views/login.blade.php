@@ -253,15 +253,26 @@ body{
         <div class="form-content">
           <div class="login-form">
             <div class="title">Login</div>
-          <form action="#">
+          <form action="{{route('account.authenticate'); }}" method="post">
+            @csrf
             <div class="input-boxes">
               <div class="input-box">
                 <i class="fas fa-envelope"></i>
-                <input type="text" placeholder="Enter your email" required>
+                <input type="email"class="from-control"  @error('email')is-invalid  @enderror" name="email" id="email" value="" placeholder="Enter your email @gmail.com">
+                <label for="email" class="from-label">Email</label>
+                @error('email')
+                    <p class="invalid-feedback">{{ $message }}  </p>
+                @enderror
+
               </div>
               <div class="input-box">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Enter your password" required>
+                <input type="password"class="from-control" @error('password')is-invalid  @enderror name="password" id="Password" value="" placeholder="Enter your password">
+                <label for="password" class="from-label">Password</label>
+                @error('email')
+                    <p class="invalid-feedback">{{ $message }}  </p>
+                @enderror
+
               </div>
               <div class="text"><a href="#">Forgot password?</a></div>
               <div class="button input-box">
